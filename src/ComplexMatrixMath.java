@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public interface ComplexMatrixMath {
     static ComplexMatrix sum(ComplexMatrix first, ComplexMatrix second) {
         if (first.getMatrix(0, 0) == null || second.getMatrix(0, 0) == null) {
@@ -66,5 +68,28 @@ public interface ComplexMatrixMath {
             }
         }
         return newM;
+    }
+    static ComplexNumber determinant(ComplexMatrix matrix, int i, Stack<Integer> stack) {
+        if (matrix.getRows() - 1 == i) {
+            for (int j = 0; j < matrix.getColumns(); ++j) {
+                if (!stack.contains(j)) {
+                    return matrix.getMatrix(i, j);
+                }
+            }
+        }
+        if (matrix.getColumns() != matrix.getRows()) {
+            System.out.println("rows != columns");
+            return null;
+        }
+        ComplexNumber answer = new ComplexNumber();
+        int count = 0;
+        for (int k = 0; k < matrix.getColumns(); ++k) {
+            if (stack.contains(k)) continue;
+            stack.push(k);
+            answer = ComplexNumbersMath.sum(answer, ComplexNumbersMath.multiply(ComplexNumbersMath.multiply(determinant(matrix, i + 1, stack), matrix.getMatrix(i, k)), count % 2 == 0 ? 1 : -1));
+            stack.pop();
+            count++;
+        }
+        return answer;
     }
 }

@@ -41,48 +41,14 @@ public class ComplexMatrix {
         if (this.isTransparent) {
             for (int i = 0; i < columns; ++i) {
                 for (int j = 0; j < rows; ++j) {
-                    int a = this.matrix[j][i].getA();
-                    int b = this.matrix[j][i].getB();
-                    if (a == 0) {
-                        if (b != 1 && b != -1) System.out.print(b);
-                        if (b != 0) System.out.print("i");
-                        System.out.print(" ");
-                    } else {
-                        System.out.print(a + " ");
-                        if (b > 0) {
-                            System.out.print("+ ");
-                            if (b != 1) System.out.print(b);
-                        } else if (b < 0) {
-                            System.out.print("- ");
-                            if (b != -1) System.out.print(-b);
-                        }
-                        if (b != 0)
-                            System.out.print("i ");
-                    }
+                    this.matrix[j][i].printNumber();
                 }
                 System.out.println();
             }
         } else {
             for (int i = 0; i < rows; ++i) {
                 for (int j = 0; j < columns; ++j) {
-                    int a = this.matrix[i][j].getA();
-                    int b = this.matrix[i][j].getB();
-                    if (a == 0) {
-                        if (b != 1 && b != -1) System.out.print(b);
-                        if (b != 0) System.out.print("i");
-                        System.out.print(" ");
-                    } else {
-                        System.out.print(a + " ");
-                        if (b > 0) {
-                            System.out.print("+ ");
-                            if (b != 1) System.out.print(b);
-                        } else if (b < 0) {
-                            System.out.print("- ");
-                            if (b != -1) System.out.print(-b);
-                        }
-                        if (b != 0)
-                            System.out.print("i ");
-                    }
+                    this.matrix[i][j].printNumber();
                 }
                 System.out.println();
             }

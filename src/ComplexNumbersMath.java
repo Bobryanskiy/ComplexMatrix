@@ -12,7 +12,7 @@ public interface ComplexNumbersMath {
     }
 
     static ComplexNumber multiply(ComplexNumber first, int second) {
-        return new ComplexNumber(first.getA() * second - first.getB(), first.getB() * second + first.getA());
+        return new ComplexNumber(first.getA() * second, first.getB() * second);
     }
 
     static ComplexNumber sum(int first, ComplexNumber second) {
@@ -20,6 +20,6 @@ public interface ComplexNumbersMath {
     }
 
     static ComplexNumber multiply(int first, ComplexNumber second) {
-        return new ComplexNumber(first * second.getA() - second.getB(), second.getA() + first * second.getB());
+        return new ComplexNumber(first * second.getA(), first * second.getB());
     }
 }

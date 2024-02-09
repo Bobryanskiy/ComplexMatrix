@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class Main {
     public static void main(String[] args) {
         ComplexMatrix f = new ComplexMatrix(2, 3);
@@ -7,6 +9,31 @@ public class Main {
         f.transpose();
         f.printMatrix();
         d.printMatrix();
+
+
+        ComplexMatrix test = new ComplexMatrix(4, 4);
+        test.setMatrix(0, 0, new ComplexNumber(-2));
+        test.setMatrix(0, 1, new ComplexNumber(1));
+        test.setMatrix(0, 2, new ComplexNumber(3));
+        test.setMatrix(0, 3, new ComplexNumber(2));
+        test.setMatrix(1, 0, new ComplexNumber(3));
+        test.setMatrix(1, 1, new ComplexNumber(0));
+        test.setMatrix(1, 2, new ComplexNumber(-1));
+        test.setMatrix(1, 3, new ComplexNumber(2));
+        test.setMatrix(2, 0, new ComplexNumber(-5));
+        test.setMatrix(2, 1, new ComplexNumber(2));
+        test.setMatrix(2, 2, new ComplexNumber(3));
+        test.setMatrix(2, 3, new ComplexNumber(0));
+        test.setMatrix(3, 0, new ComplexNumber(4));
+        test.setMatrix(3, 1, new ComplexNumber(-1));
+        test.setMatrix(3, 2, new ComplexNumber(2));
+        test.setMatrix(3, 3, new ComplexNumber(-3));
+        System.out.println();
+        test.printMatrix();
+        System.out.println();
+        ComplexMatrixMath.determinant(test, 0, new Stack<>()).printNumber();
+        System.out.println();
+        System.out.println();
 
         ComplexMatrix aa = new ComplexMatrix(2, 2);
         aa.setMatrix(0, 0, new ComplexNumber(-2));
