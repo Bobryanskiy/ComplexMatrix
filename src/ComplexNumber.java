@@ -35,6 +35,23 @@ public class ComplexNumber {
         }
     }
 
+    public ComplexNumber sum(ComplexNumber num) {
+        return new ComplexNumber(this.a + num.a, this.b + num.b);
+    }
+
+    public ComplexNumber sub(ComplexNumber num) {
+        return new ComplexNumber(this.a - num.a, this.b - num.b);
+    }
+
+    public ComplexNumber multiply(ComplexNumber num) {
+        return new ComplexNumber(this.a * num.a - this.b * num.b, this.b * num.a + this.a * num.b);
+    }
+
+    public ComplexNumber divide(ComplexNumber num) {
+        int i = num.a * num.a + num.b * num.b;
+        return new ComplexNumber((this.a * num.a + this.b * num.b) / i, (this.b * num.a - this.a * num.b) / i);
+    }
+
     public int getA() {
         return a;
     }
