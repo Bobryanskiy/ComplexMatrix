@@ -1,5 +1,4 @@
 import java.util.Random;
-import java.util.Stack;
 
 public class ComplexMatrix {
     private boolean isTransparent;
@@ -137,24 +136,23 @@ public class ComplexMatrix {
             System.out.println("rows != columns");
             return null;
         }
-        return determinantStep(0, new Stack<>());
+        return determinantStep(0, new boolean[this.columns]);
     }
 
-    private ComplexNumber determinantStep(int i, Stack<Integer> stack) {
+    private ComplexNumber determinantStep(int i, boolean[] steps) {
         if (this.rows - 1 == i) {
             for (int j = 0; j < this.columns; ++j) {
-                if (!stack.contains(j)) {
+                if (!steps[j])
                     return this.matrix[i][j];
-                }
             }
         }
         ComplexNumber answer = new ComplexNumber();
         int count = 0;
         for (int k = 0; k < this.columns; ++k) {
-            if (stack.contains(k)) continue;
-            stack.push(k);
-            answer = answer.sum(determinantStep(i + 1, stack).multiply(this.matrix[i][k]).multiply(count % 2 == 0 ? new ComplexNumber(1) : new ComplexNumber(-1)));
-            stack.pop();
+            if (steps[k]) continue;
+            steps[k] = true;
+            answer = answer.sum(determinantStep(i + 1, steps).multiply(this.matrix[i][k]).multiply(count % 2 == 0 ? new ComplexNumber(1) : new ComplexNumber(-1)));
+            steps[k] = false;
             count++;
         }
         return answer;

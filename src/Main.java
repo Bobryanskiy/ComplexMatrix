@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         ComplexMatrix test = new ComplexMatrix(4, 4);
-        test.setMatrix(0, 0, new ComplexNumber(-2,1 ));
+        test.setMatrix(0, 0, new ComplexNumber(-2,1));
         test.setMatrix(0, 1, new ComplexNumber(1, 3));
         test.setMatrix(0, 2, new ComplexNumber(3, -4));
         test.setMatrix(0, 3, new ComplexNumber(2, 5));
@@ -21,9 +21,8 @@ public class Main {
         test.printMatrix();
 
         System.out.println();
-
         test.determinant().printNumber();
-
+        System.out.println();
         System.out.println();
 
         ComplexMatrix a = new ComplexMatrix(2, 2);
